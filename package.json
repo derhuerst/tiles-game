@@ -19,5 +19,25 @@
 		"node": ">=6"
 	},
 	"dependencies": {
+		"csjs": "^1.1.0",
+		"dom-delegator": "^13.1.0",
+		"global": "^4.3.2",
+		"virtual-dom": "^2.1.1",
+		"virtual-hyperscript-svg": "^2.0.0"
+	},
+	"devDependencies": {
+		"browserify": "^14.4.0",
+		"browserify-reload": "^1.1.1",
+		"csjs-extractify": "^1.0.0-alpha.0",
+		"envify": "^4.0.0",
+		"es2020": "^1.1.9",
+		"uglify-es": "^3.0.15",
+		"watchify": "^3.9.0"
+	},
+	"scripts": {
+		"bundle": "browserify -p [ csjs-extractify -o bundle.css --extension '.css.js' ] -t es2020 -t [ envify --NODE_ENV production ] lib/index.js > bundle.js",
+		"minify": "cat bundle.js | uglifyjs -mc > bundle.min.js",
+		"build": "npm run bundle && npm run minify",
+		"start": "watchify --debug -p browserify-reload -p [ csjs-extractify -o bundle.css --extension '.css.js' ] -t es2020 -t [ envify --NODE_ENV development ] lib/index.js -o bundle.js"
 	}
 }
