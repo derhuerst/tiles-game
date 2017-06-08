@@ -1,0 +1,23 @@
+{
+	"name": "tiles-game",
+	"description": "A little game about coloring tiles.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"game",
+		"svg"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/tiles-game",
+	"repository": "derhuerst/tiles-game",
+	"bugs": "https://github.com/derhuerst/tiles-game/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+	}
+}
