@@ -27,6 +27,8 @@
 		"virtual-hyperscript-svg": "^2.0.0"
 	},
 	"devDependencies": {
+		"babelify": "^7.3.0",
+		"babel-preset-es2015": "^6.24.1",
 		"browserify": "^14.4.0",
 		"browserify-reload": "^1.1.1",
 		"csjs-extractify": "^1.0.0-alpha.0",
