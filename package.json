@@ -1,0 +1,64 @@
+{
+	"name": "tiles-game",
+	"description": "A little game about coloring tiles.",
+	"version": "0.1.0",
+	"main": "index.js",
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"game",
+		"svg"
+	],
+	"author": "Jannis R <mail@jannisr.de>",
+	"homepage": "https://github.com/derhuerst/tiles-game",
+	"repository": "derhuerst/tiles-game",
+	"bugs": "https://github.com/derhuerst/tiles-game/issues",
+	"license": "ISC",
+	"engines": {
+		"node": ">=6"
+	},
+	"dependencies": {
+		"csjs": "^1.1.0",
+		"dom-delegator": "^13.1.0",
+		"global": "^4.3.2",
+		"lodash.clonedeep": "^4.5.0",
+		"virtual-dom": "^2.1.1",
+		"virtual-hyperscript-svg": "^2.0.0"
+	},
+	"devDependencies": {
+		"babel-preset-es2015": "^6.24.1",
+		"babelify": "^7.3.0",
+		"browserify": "^14.4.0",
+		"browserify-reload": "^1.1.1",
+		"csjs-extractify": "^1.0.0-alpha.0",
+		"envify": "^4.0.0",
+		"uglify-es": "^3.0.15",
+		"watchify": "^3.9.0"
+	},
+	"browserify": {
+		"transform": [
+			[
+				"babelify",
+				{
+					"presets": [
+						"es2015"
+					],
+					"global": true
+				}
+			],
+			[
+				"envify",
+				{
+					"NODE_ENV": "production"
+				}
+			]
+		]
+	},
+	"scripts": {
+		"bundle": "browserify -p [ csjs-extractify -o bundle.css --extension '.css.js' ] lib/index.js > bundle.js",
+		"minify": "cat bundle.js | uglifyjs -mc > bundle.min.js",
+		"build": "npm run bundle && npm run minify",
+		"start": "watchify --debug -p browserify-reload -p [ csjs-extractify -o bundle.css --extension '.css.js' ] -t es2020 -t [ envify --NODE_ENV development ] lib/index.js -o bundle.js"
+	}
+}
